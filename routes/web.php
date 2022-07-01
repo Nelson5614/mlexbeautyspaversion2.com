@@ -1,36 +1,54 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AppointmentController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-       //HomeContoller and it's pages
-Route::get('/', [HomeController::class, 'home']);
-Route::get('/massage-services', [HomeController::class, 'massage_services']);
-Route::get('/body-services', [HomeController::class, 'body_services']);
-Route::get('/shop', [HomeController::class, 'shop']);
-Route::get('/about', [HomeController::class, 'about']);
-Route::get('/contact', [HomeController::class, 'contact']);
-Route::get('/portfolio', [HomeController::class, 'portfolio']);
-Route::get('/blog', [HomeController::class, 'blog']);
-Route::get('/blog-details', [HomeController::class, 'blog_details']);
-Route::get('/product-details', [HomeController::class, 'product_details']);
-Route::get('/cart', [HomeController::class, 'cart']);
-Route::get('/checkout', [HomeController::class, 'checkout']);
-Route::get('/specialists', [HomeController::class, 'specialists']);
 
-            ////contact
-Route::post('/contact', [ContactController::class, 'contact'])->name('contact');
+       // pages routes
+        Route::get('/', [HomeController::class, 'home']);
+        Route::get('/portfolio', [HomeController::class, 'portfolio']);
+
+        //Contat routes
+        Route::get('/contact', [HomeController::class, 'contact']);
+        Route::post('/contact', [ContactController::class, 'contact'])->name('contact');
+        
+        //Blog routes
+        Route::get('/blog', [HomeController::class, 'blog']);
+        Route::get('/blog-details', [HomeController::class, 'blog_details']);
+        
+        //Servives routes
+        Route::get('/massage-services', [HomeController::class, 'massage_services']);
+        Route::get('/body-services', [HomeController::class, 'body_services']);
+        
+        
+        //Shop routes
+        Route::get('/shop', [HomeController::class, 'shop']);
+        Route::get('/shop/{product}', [HomeController::class, 'show'])->name('product_details');
+        
+        //About routes
+        Route::get('/about', [HomeController::class, 'about']);
+        Route::get('/specialists', [HomeController::class, 'specialists']);
+
+
+        //cart routes
+        Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+        Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+        Route::get('/checkout', [CartController::class, 'checkout']);
+        Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.delete');
+
+      
+
+        //Appointments routes
+        Route::get('/appointment', [HomeController::class, 'appointment']);
+        Route::get('/myappointments', [AppointmentController::class, 'myappointments']);
+        Route::get('/cancel-appointment/{id}', [AppointmentController::class, 'cancel']);
+        Route::post('/appointment', [AppointmentController::class, 'appointment'])->name('appointment');
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -38,7 +56,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('home');
     })->name('dashboard');
 });
 

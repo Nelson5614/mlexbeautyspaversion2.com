@@ -63,7 +63,7 @@
                                 <h1>Welcome to <br /> Mlexbeautyspa</h1>
                                 <p>Thank you for stoping by, you are about to explore more about us and <br> get to know more about what we do.</p>
                                 
-                                <a href="appointment.html" class="btn">
+                                <a href="{{ url('appointment') }}" class="btn">
                                     <span>Appointment</span>
                                     <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                                 </a>
@@ -190,46 +190,26 @@
         <!-- Shop Category Carousel -->
         <div class="shop-category-carousel owl-carousel bt-carousel" data-owl-autoplay="true" data-owl-items="3" data-owl-margin="30" data-owl-nav="true" data-owl-responsive='{"0": {"items": "1"}, "540": {"items": "2"}, "992": {"items": "3"}}'>
             <!-- Shop Category Single Slide -->
+
+            @foreach ($products as $product )
+
             <div class="shop-category-single">
-                <img src="assets/img/media/flat-tummy-solution_800x500.jpg" data-rjs="2" alt="">
+                <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}" data-rjs="2" alt="">
 
                 <div class="content">
-                    <h2>Flat-tummy-solutions</h2>
+                    <h2>{{ $product->name }}</h2>
                     <a href="{{ url('shop') }}" class="btn btn-white">
                         <span>View products</span>
                         <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                     </a>
                 </div>
             </div>
-            <!-- End Shop Category Single Slide -->
+                
+            @endforeach
+        
+            
 
-            <!-- Shop Category Single Slide -->
-            <div class="shop-category-single">
-                <img src="assets/img/media/mpesu_800x500.jpg" data-rjs="2" alt="">
-
-                <div class="content">
-                    <h2>Mpesu Lebido booster</h2>
-                    <a href="shop.html" class="btn btn-white">
-                        <span>View products</span>
-                        <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
-                    </a>
-                </div>
-            </div>
-            <!-- End Shop Category Single Slide -->
-
-            <!-- Shop Category Single Slide -->
-            <div class="shop-category-single">
-                <img src="assets/img/media/guava-leaves_800x500.jpg" data-rjs="2" alt="">
-
-                <div class="content">
-                    <h2>Guava-leaves</h2>
-                    <a href="shop.html" class="btn btn-white">
-                        <span>View products</span>
-                        <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
-                    </a>
-                </div>
-            </div>
-            <!-- End Shop Category Single Slide -->
+         
         </div>
         <!-- End Shop Category Carousel -->
     </section>
@@ -367,168 +347,53 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Single Product -->
-                    <div class="single-product">
-                        <div class="product-top">
-                            <a href="{{ url('product-details') }}" class="product-thumbnail">
-                                <img src="assets/img/media/flat-tummy-solution_800x500.jpg" data-rjs="2" alt="">
-                            </a>
+                @foreach ($products as $product )
+                    <div class="col-lg-3 col-sm-6">
+                        <!-- Single Product -->                    
+                        <div class="single-product">
+                                <div class="product-top">
+                                    <a href="{{ url('product-details') }}" class="product-thumbnail">
+                                        <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}" data-rjs="2" alt="">
+                                    </a>
 
-                            <div class="buttons">
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/love.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/compare.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/cart.svg" alt="" class="svg">
-                                </a>
+                                    <div class="buttons">
+                                        <a href="#" class="btn-circle">
+                                            <img src="assets/img/icon/love.svg" alt="" class="svg">
+                                        </a>
+                                        <a href="#" class="btn-circle">
+                                            <img src="assets/img/icon/compare.svg" alt="" class="svg">
+                                        </a>
+                                        <a href="#" class="btn-circle">
+                                            <img src="assets/img/icon/cart.svg" alt="" class="svg">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="product-summary">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    
+                                    <a href="{{ url('product-details') }}"><h4>{{ $product->name }}</h4></a>
+
+                                    <span class="price">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <span class="woocommerce-Price-currencySymbol">LSL</span>
+                                            {{ $product->price }}.00
+                                        </span>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="product-summary">
-                            <div class="star-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            
-                            <a href="{{ url('product-details') }}"><h4>Flat-tummy-solutions</h4></a>
-
-                            <span class="price">
-                                <span class="woocommerce-Price-amount amount">
-                                    <span class="woocommerce-Price-currencySymbol">LSL</span>
-                                    100.00
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Single Product -->
-                    <div class="single-product">
-                        <div class="product-top">
-                            <a href="{{ url('product-details') }}" class="product-thumbnail">
-                                <img src="assets/img/media/guava-leaves_800x500.jpg" data-rjs="2" alt="">
-                            </a>
-
-                            <div class="buttons">
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/love.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/compare.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/cart.svg" alt="" class="svg">
-                                </a>
-                            </div>
-                        </div>
                         
-                        <div class="product-summary">
-                            <div class="star-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <a href="{{ url('product-details') }}"><h4>Guava-leaves</h4></a>
-                            <span class="price">
-                                <span class="woocommerce-Price-amount amount">
-                                    <span class="woocommerce-Price-currencySymbol">LSL</span>
-                                    50.00
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Single Product -->
-                    <div class="single-product">
-                        <div class="product-top">
-                            <a href="{{ url('product-details') }}" class="product-thumbnail">
-                                <img src="assets/img/media/mpesu_800x500.jpg" data-rjs="2" alt="">
-                            </a>
-
-                            <div class="buttons">
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/love.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/compare.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/cart.svg" alt="" class="svg">
-                                </a>
-                            </div>
-                        </div>
                         
-                        <div class="product-summary">
-                            <div class="star-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <a href="{{ url('product-details') }}"><h4>Mpesu Lebido Booster </h4></a>
-                            <span class="price">
-                                <span class="woocommerce-Price-amount amount">
-                                    <span class="woocommerce-Price-currencySymbol">LSL</span>
-                                    50
-                                </span>
-                            </span>
-                        </div>
+                        <!-- End Single Product -->
                     </div>
-                    <!-- End Single Product -->
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Single Product -->
-                    <div class="single-product">
-                        <div class="product-top">
-                            <a href="shop-details.html" class="product-thumbnail">
-                                <img src="assets/img/media/mpesu_800x500.jpg" data-rjs="2" alt="">
-                            </a>
-
-                            <div class="buttons">
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/love.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/compare.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/cart.svg" alt="" class="svg">
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="product-summary">
-                            <div class="star-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <a href="shop-details.html"><h4>Yoni Steaming Herbs </h4></a>
-                            <span class="price">
-                                <span class="woocommerce-Price-amount amount">
-                                    <span class="woocommerce-Price-currencySymbol">LSL</span>
-                                    50
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                </div>
+                    @endforeach
+                
             </div>
         </div>
     </section>

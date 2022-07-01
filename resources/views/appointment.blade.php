@@ -3,7 +3,7 @@
 
 <head>
     <!-- Page Title -->
-    <title>mlexbeautyspa</title>
+    <title>Mlexbeautyspa</title>
 
     <!-- Meta Data -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -58,10 +58,10 @@
             <div class="row"> 
                 <div class="col-12">
                     <div class="page-title"> 
-                        <h2>Mlexbeautyspa Shop</h2> 
+                        <h2>Appointment</h2> 
                         <ul class="nav"> 
                             <li><a href="{{ url('/') }}">Home</a></li>
-                            <li class="active">Mlexbeautyspa Shop</li>
+                            <li class="active">Appointment</li>
                         </ul> 
                     </div>
                 </div>
@@ -69,63 +69,94 @@
         </div>
     </div>
     <!-- End Breadcrumb -->
-    
-    <!-- Product -->
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">X</button>
+                {{ session()->get('message') }}
+
+            </div>
+        @endif
+    <!-- Contact -->
     <section class="pt-120 pb-120">
         <div class="container">
             <div class="row">
-                @foreach ($products as $product )
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Single Product -->
-                    <div class="single-product">
-                        <div class="product-top">
-                            <a href="shop-details.html" class="product-thumbnail">
-                                <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}" data-rjs="2" alt="">
-                            </a>
+                <div class="col-lg-4">
+                  <!-- Quick Contact -->
+                  <div class="quick-contact" data-bg-img="assets/img/bg/quick-contact-bg.png">
+                    <h3>Quick Contact</h3>
+                    <p>We are the number beauty spa in town.</p>
 
-                            <div class="buttons">
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/love.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/compare.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/cart.svg" alt="" class="svg">
-                                </a>
-                            </div>
-                        </div>
+                    <ul class="quick-contact-list pt-2">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:02094857568">(+266) 56 230 279 / 63 209 170</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@beautain.com">mlex@mlexbeautyspa.co.ls</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            Police Europa <br />Maseru 100.
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            Mon - Fri: 6 am to 7 pm
+                            <span>Sat - Sun: 9am - 3pm</span>
+                        </li>
+                    </ul>
 
-                        <div class="product-summary">
-                            <div class="star-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <a href="{{ route('product_details', $product->slug) }}"><h4>{{ $product->name }}</h4></a>
-                            <span class="price">
-                                <span class="woocommerce-Price-amount amount">
-                                    <span class="woocommerce-Price-currencySymbol">LSL</span>
-                                    {{ $product->price }}.00
-                                </span>
-                            </span>
-                        </div>
+                    <!-- Socials -->
+                    <div class="socials">
+                        <a href="https://www.facebook.com">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.twitter.com">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
                     </div>
-                    <!-- End Single Product -->
+                    <!-- End Socials -->
                 </div>
-                @endforeach
-               
-               
+                <!-- End Quick Contact -->
+                </div>
+                <div class="col-lg-8">
+                    @include('components.appointment')
+                </div>
             </div>
-           
         </div>
     </section>
-    <!-- End Product -->
+    <!-- End Contact -->
+
+    <!-- Call To Action -->
+    <section class="pt-120 pb-120" data-bg-img="assets/img/bg/cta-bg.png">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-9 col-md-10">
+                    <!-- CTA Content -->
+                    <div class="cta-content text-center">
+                        <h4>For Your First Visit</h4>
+                        <h2>Get 20% Off</h2>
+                        <p>You can shop brands only sold in the Aus, compare prices on your favourites products
+                            read reviews before you try something new, all without leaving your home!</p>
+                        <a href="{{ url('shop') }}" class="btn">
+                            <span>Shop Now</span>
+                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                        </a>
+                    </div>
+                    <!-- End CTA Content -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Call To Action -->
+
 
     <!-- Footer -->
-    @include('components.footer')
+   @include('components.footer')
     <!-- End Footer -->
 
     <!-- Back to Top Button -->

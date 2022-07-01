@@ -49,124 +49,7 @@
     <!-- End Preloader -->
 
     <!-- Header -->
-    <header class="header">
-        <!-- Header Top -->
-        <div class="header-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <div class="info-bar">
-                            <ul class="hz-list justify-content-center justify-content-lg-start">
-                                <li><span>Opening Time: </span> Mon - Fri: 6 am to 7 pm</li>
-                                <li><span>Sat - Sun: </span> 6 am to 3pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <ul class="hz-list justify-content-center justify-content-lg-end">
-                            <li><a href="tel:94857568" class="number">(+266) 56 230 279 / 63 209 170</a></li>
-                            <li>
-                                <!-- Social Links -->
-                                <div class="social-links">
-                                    <a href="https://www.facebook.com">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="https://twitter.com/">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="https://www.pinterest.com">
-                                        <i class="fab fa-pinterest-p"></i>
-                                    </a>
-                                </div>
-                                <!-- End Social Links -->
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Header Top -->
-
-        <!-- Header Main -->
-        <div class="header-main love-sticky bg-white">
-            <div class="container">
-                <div class="row align-items-center position-relative">
-                    <div class="col-lg-3 col-sm-5 col-7">
-                        <!-- Start Logo -->
-                        <div class="logo">
-                            <a href="index.html">
-                                <img src="assets/img/logo.png" style="width: 100px;" alt="">
-                                
-                            </a>
-                        </div>
-                        <!-- End of Logo -->
-                    </div>
-
-                    <div class="col-lg-9 col-sm-7 col-5 d-flex align-items-center justify-content-end position-static">
-                        <div class="nav-wrapper">
-                            <div class="nav-wrap-inner">
-                                <!-- Nav -->
-                                <ul class="nav">
-                                    <li>
-                                        <a class="current-menu-parent" href="#">Home</a>
-                                       
-                                    </li>
-                                  
-                                    <li>
-                                        <a href="#">Services</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="service.html">Massage Service</a></li>
-                                            <li><a href="service-details.html">Body Servies</a></li>
-                                            
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Shop</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="shop-details.html">Shop details</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li>
-                                        <a href="#">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ url('Blog') }}">Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
-
-                                    @if (Route::has('login'))
-
-                                        @auth
-                                            
-                                       <x-app-layout></x-app-layout>
-                                        
-                                    @else
-
-                                    <a href="{{ route('login') }}" style="border: solid 1px #F81781; width: 80px; margin-top: 11px; padding-top: 4px; padding-left: 14px; height: 35px;">
-                                        <span>Login</span>                                       
-                                    </a>
-                                    <a href="{{ route('register') }}" style="background-color: #F81781; color: white; width: 90px; margin-top: 11px; padding-top: 4px; margin-left: 15px; padding-left: 14px; height: 35px;">
-                                        <span>Register</span>                                       
-                                    </a>
-
-                                        @endauth
-                                    @endif
-                                    
-                                </ul>
-                                <!-- End Nav -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Header Main -->
-    </header>
+    @include('components.header')
     <!-- End Header -->
 
     <!-- Banner -->
@@ -182,7 +65,7 @@
                                 <h1>Welcome to <br /> Mlexbeautyspa</h1>
                                 <p>Thank you for stoping by, you are about to explore more about us and <br> get to know more about what we do.</p>
                                 
-                                <a href="appointment.html" class="btn">
+                                <a href="{{ url('appointment') }}" class="btn">
                                     <span>Appointment</span>
                                     <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                                 </a>

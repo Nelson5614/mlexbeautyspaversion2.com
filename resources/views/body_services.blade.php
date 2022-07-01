@@ -84,7 +84,7 @@
                     <!-- End Section Title -->
                 </div>
                 <div class="col-md-4 text-lg-end">
-                    <a href="service.html" class="btn mb-60 res-mt">
+                    <a href="{{ url('appointment') }}" class="btn mb-60 res-mt">
                         <span>Appointment</span>
                         <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                     </a>

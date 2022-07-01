@@ -121,7 +121,7 @@
                     <!-- Contact Form Wrapper -->
                     <div class="contact-form-wrap" data-bg-img="assets/img/bg/contact-form-bg.png">
                         <h3>Send Us A Message</h3>
-                        <form action="{{ url('contact') }}" method="POST" class="contact-form">
+                        <form action="{{ url('contact') }}" method="POST" enctype="multipart/form-data" class="contact-form">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">

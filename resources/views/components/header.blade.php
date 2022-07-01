@@ -78,21 +78,31 @@
                                         <li><a href="{{ url('checkout') }}">Checkout</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ url('portfolio') }}">Portfolio</a></li>
-                                <li>
-                                    <a href="{{ url('blog') }}">Blog</a>
-                                    
-                                </li>
-                                <li><a href="{{ url('contact') }}">Contact</a></li>
+                               
 
+                                @if (Route::has('login'))
 
-                                <a href="{{ route('login') }}" style="border: solid 1px #F81781; width: 80px; margin-top: 6px; padding-top: 4px; padding-left: 14px; height: 35px;">
-                                    <span>Login</span>                                       
-                                </a>
-                                <a href="{{ route('register') }}" style="background-color: #F81781; color: white; width: 90px; margin-top: 6px; padding-top: 4px; margin-left: 15px; padding-left: 14px; height: 35px;">
-                                    <span>Register</span>                                       
-                                </a>
-                                
+                                        @auth
+                                        <li><a href="{{ url('myappointments') }}" style="background-color: green; color: white; padding-left: 4px; padding-right: 4px; border-radius: 20px;">My Appointments</a></li>    
+                                        <x-app-layout></x-app-layout>
+                                            
+                                        @else
+                                        <li><a href="{{ url('portfolio') }}">Portfolio</a></li>
+                                        <li>
+                                            <a href="{{ url('blog') }}">Blog</a>
+                                            
+                                        </li>
+                                        <li><a href="{{ url('contact') }}">Contact</a></li>
+
+                                        <a href="{{ route('login') }}" style="border: solid 1px #F81781; width: 80px; margin-top: 11px; padding-top: 4px; padding-left: 14px; height: 35px;">
+                                            <span>Login</span>                                       
+                                        </a>
+                                        <a href="{{ route('register') }}" style="background-color: #F81781; color: white; width: 90px; margin-top: 11px; padding-top: 4px; margin-left: 15px; padding-left: 14px; height: 35px;">
+                                            <span>Register</span>                                       
+                                        </a>
+
+                                        @endauth
+                                    @endif
                             </ul>
                             <!-- End Nav -->
                         </div>

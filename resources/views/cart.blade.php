@@ -60,7 +60,7 @@
                     <div class="page-title"> 
                         <h2>Cart</h2> 
                         <ul class="nav"> 
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{ url('/') }}">Home</a></li>
                             <li class="active">Cart</li>
                         </ul> 
                     </div>
@@ -74,10 +74,16 @@
     <div class="pt-120 pb-120">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="woocommerce--content">
-                        <!-- Cart Form -->
-                        <form action="#" class="woocommerce-cart-form">
+
+                @if (Cart::count() > 0)
+                    
+                
+                    <h4>{{ Cart::count() }} item(s) in the shopping cart</h4> <hr> <br> <br> <br>
+
+                    <div class="col-12">
+                        <div class="woocommerce--content">
+                            <!-- Cart Form -->
+                           
                             <div class="table-responsive">
                                 <!-- Cart Table -->
                                 <table class="shop_table cart_table responsive_table">
@@ -86,124 +92,57 @@
                                             <th class="product-name pt-0 text-start">Product name</th>
                                             <th class="product-price pt-0">Price/Unit</th>
                                             <th class="product-quantity pt-0">Quantity</th>
-                                            <th class="product-subtotal pt-0">Total</th>
-                                            <th class="product-remove pt-0">Remove</th>
+                                            {{-- <th class="product-subtotal pt-0">Total</th>
+                                            <th class="product-remove pt-0">Remove</th> --}}
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td class="product-name">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="#">
-                                                        <img src="assets/img/media/80x80.png" alt="">
-                                                    </a>
-                                                    <a href="#">Woven Throw Pillow</a>
-                                                </div>
-                                            </td>
-
-                                            <td class="product-price">$25</td>
-
-                                            <td class="product-quantity">
-                                                <!-- Quantity -->
-                                                <div class="quantity">
-                                                    <div class="input-group">
-                                                        <span class="minus">
-                                                            <img src="assets/img/icon/minus.svg" alt="" class="svg">
-                                                        </span>
-                                                        <input type="text" class="input-text qty text" value="1">
-                                                        <span class="plus">
-                                                            <img src="assets/img/icon/plus2.svg" alt="" class="svg">
-                                                        </span>
+                                        @foreach (Cart::content() as $item )
+                                            <tr>
+                                                <td class="product-name">
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="#">
+                                                            <img src="assets/img/media/80x80.png" alt="">
+                                                        </a>
+                                                        <a href="{{ route('product_details', $item->model->slug) }}">{{ $item->model->name }}</a>
                                                     </div>
-                                                </div>
-                                                <!-- End Quantity -->
-                                            </td>
+                                                </td>
 
-                                            <td class="product-subtotal">
-                                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>59.00</span>
-                                            </td>
-                                            <td class="product-remove">
-                                                <a href="#">
-                                                    <img src="assets/img/icon/remove_2.svg" class="svg" alt="">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-name">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="#">
-                                                        <img src="assets/img/media/80x80.png" alt="">
-                                                    </a>
-                                                    <a href="#">Woven Throw Pillow</a>
-                                                </div>
-                                            </td>
+                                                <td class="product-price">LSL{{ $item->model->price }}.00</td>
 
-                                            <td class="product-price">$25</td>
-
-                                            <td class="product-quantity">
-                                                <!-- Quantity -->
-                                                <div class="quantity">
-                                                    <div class="input-group">
-                                                        <span class="minus">
-                                                            <img src="assets/img/icon/minus.svg" alt="" class="svg">
-                                                        </span>
-                                                        <input type="text" class="input-text qty text" value="1">
-                                                        <span class="plus">
-                                                            <img src="assets/img/icon/plus2.svg" alt="" class="svg">
-                                                        </span>
+                                                <td class="product-quantity">
+                                                    <!-- Quantity -->
+                                                    <div class="quantity">
+                                                        <div class="input-group">
+                                                            <span class="minus">
+                                                                <img src="assets/img/icon/minus.svg" alt="" class="svg">
+                                                            </span>
+                                                            <input type="text" class="input-text qty text" value="1">
+                                                            <span class="plus">
+                                                                <img src="assets/img/icon/plus2.svg" alt="" class="svg">
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!-- End Quantity -->
-                                            </td>
+                                                    <!-- End Quantity -->
+                                                </td>
 
-                                            <td class="product-subtotal">
-                                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>59.00</span>
-                                            </td>
-                                            
-                                            <td class="product-remove">
-                                                <a href="#">
-                                                    <img src="assets/img/icon/remove_2.svg" class="svg" alt="">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-name">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="#">
-                                                        <img src="assets/img/media/80x80.png" alt="">
-                                                    </a>
-                                                    <a href="#">Woven Throw Pillow</a>
-                                                </div>
-                                            </td>
-
-                                            <td class="product-price">$25</td>
-
-                                            <td class="product-quantity">
-                                                <!-- Quantity -->
-                                                <div class="quantity">
-                                                    <div class="input-group">
-                                                        <span class="minus">
-                                                            <img src="assets/img/icon/minus.svg" alt="" class="svg">
-                                                        </span>
-                                                        <input type="text" class="input-text qty text" value="1">
-                                                        <span class="plus">
-                                                            <img src="assets/img/icon/plus2.svg" alt="" class="svg">
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <!-- End Quantity -->
-                                            </td>
-
-                                            <td class="product-subtotal">
-                                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>59.00</span>
-                                            </td>
-                                            <td class="product-remove">
-                                                <a href="#">
-                                                    <img src="assets/img/icon/remove_2.svg" class="svg" alt="">
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                {{-- <td class="product-subtotal">
+                                                    <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>59.00</span>
+                                                </td> --}}
+                                                <form action="{{ route('cart.delete', $item->rowId) }}" method="POST" class="woocommerce-cart-form">
+                                                    @csrf
+                                                    {{ method_field('DELETE') }}
+                                                    <td class="product-remove">
+                                                        <button type="submit">
+                                                            <img src="assets/img/icon/remove_2.svg" class="svg" alt="">
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                            </tr>  
+                                        @endforeach
+                                        
+                                        
                                         <tr>
                                             <td colspan="2" class="actions">
                                                 <!-- Coupon -->
@@ -219,7 +158,7 @@
                                                 <!-- End Cupon -->
                                             </td>
 
-                                            <td colspan="3" class="pe-0">
+                                            {{-- <td colspan="3" class="pe-0">
                                                 <div class="d-flex align-items-center justify-content-end">
                                                     <div class="cart-subtotal-wrap me-5 d-none d-lg-block">
                                                         <span class="cart-subtotal">Cart Subtotal:</span>
@@ -230,53 +169,64 @@
                                                         <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                                                     </button>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     </tbody>
                                 </table>
                                 <!-- End Cart Table -->
                             </div>
-                        </form>
-                        <!-- End Cart Form -->
+                            
+                            <!-- End Cart Form -->
 
-                        <!-- Cart Collaterals -->
-                        <div class="cart-collaterals">
-                            <div class="cart_totals calculated_shipping">
-                                <table class="shop_table">
-                                    <tbody>
-                                        <tr class="cart-subtotal">
-                                            <th>Subtotal</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">$</span>125</span>
-                                            </td>
-                                        </tr>
-                        
-                                        <tr class="order-total">
-                                            <th>Total</th>
-                                            <td>
-                                                <strong>
+                            <!-- Cart Collaterals -->
+                            <div class="cart-collaterals">
+                                <div class="cart_totals calculated_shipping">
+                                    <table class="shop_table">
+                                        <tbody>
+                                            <tr class="cart-subtotal">
+                                                <th>Subtotal</th>
+                                                <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        210.00
-                                                    </span>
-                                                </strong> 
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        
-                                <div class="wc-proceed-to-checkout text-end">
-                                    <a href="checkout.html" class="btn">
-                                        <span>Proceed to checkout</span>
-                                        <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
-                                    </a>
+                                                        <span class="woocommerce-Price-currencySymbol">LSL</span>{{ Cart::subtotal( ) }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="cart-subtotal">
+                                                <th>Tax(15%)</th>
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <span class="woocommerce-Price-currencySymbol">LSL</span>{{ Cart::tax( ) }}</span>
+                                                </td>
+                                            </tr>
+                            
+                                            <tr class="order-total">
+                                                <th>Total</th>
+                                                <td>
+                                                    <strong>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">LSL</span>
+                                                            {{ Cart::total( ) }}
+                                                        </span>
+                                                    </strong> 
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            
+                                    <div class="wc-proceed-to-checkout text-end">
+                                        <a href="checkout.html" class="btn">
+                                            <span>Proceed to checkout</span>
+                                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- End Cart Collaterals -->
                         </div>
-                        <!-- End Cart Collaterals -->
                     </div>
-                </div>
+                @else
+                <h4>No items in cart!</h4> <br> <br> <br>   
+                <a href="{{ url('/shop') }}" style="border: 1px solid black; padding: 8px; width: 180px;">Continue shoping</a>
+                @endif
             </div>
         </div>
     </div>

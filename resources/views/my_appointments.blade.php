@@ -3,7 +3,7 @@
 
 <head>
     <!-- Page Title -->
-    <title>mlexbeautyspa</title>
+    <title>Mlexbeautyspa</title>
 
     <!-- Meta Data -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,7 +13,7 @@
     <meta name="keywords" content="" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="logo.png" />
 
     <!-- Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -52,81 +52,28 @@
     @include('components.header')
     <!-- End Header -->
 
-    <!-- Breadcrumb -->
-    <div class="page-title-wrap" data-bg-img="assets/img/bg/pexels-rodnae-productions-6724351.jpg">
-        <div class="container"> 
-            <div class="row"> 
-                <div class="col-12">
-                    <div class="page-title"> 
-                        <h2>Mlexbeautyspa Shop</h2> 
-                        <ul class="nav"> 
-                            <li><a href="{{ url('/') }}">Home</a></li>
-                            <li class="active">Mlexbeautyspa Shop</li>
-                        </ul> 
-                    </div>
-                </div>
-            </div>
-        </div>
+    <br> <br> <br> <br>
+    <!-- My appointment table -->
+    <div align="center" style="padding: 70px;">
+
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Message</th>
+                <th>Status</th>
+            </tr>
+            @foreach ($appoint as $appoints )
+            <tr>
+                <td>{{ $appoints->service }}</td>
+                <td>{{ $appoints->date }}</td>
+                <td>{{ $appoints->message }}</td>
+                <td>{{ $appoints->status }}</td>
+                <td><a href="{{ url('cancel-appointment',$appoints->id) }}" class="btn btn-danger" onclick=" return confirm('Do you want to delete this appointment?')">cancel</a></td>
+            </tr>
+            @endforeach
+        </table>
     </div>
-    <!-- End Breadcrumb -->
-    
-    <!-- Product -->
-    <section class="pt-120 pb-120">
-        <div class="container">
-            <div class="row">
-                @foreach ($products as $product )
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Single Product -->
-                    <div class="single-product">
-                        <div class="product-top">
-                            <a href="shop-details.html" class="product-thumbnail">
-                                <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}" data-rjs="2" alt="">
-                            </a>
-
-                            <div class="buttons">
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/love.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/compare.svg" alt="" class="svg">
-                                </a>
-                                <a href="#" class="btn-circle">
-                                    <img src="assets/img/icon/cart.svg" alt="" class="svg">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="product-summary">
-                            <div class="star-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <a href="{{ route('product_details', $product->slug) }}"><h4>{{ $product->name }}</h4></a>
-                            <span class="price">
-                                <span class="woocommerce-Price-amount amount">
-                                    <span class="woocommerce-Price-currencySymbol">LSL</span>
-                                    {{ $product->price }}.00
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                </div>
-                @endforeach
-               
-               
-            </div>
-           
-        </div>
-    </section>
-    <!-- End Product -->
-
-    <!-- Footer -->
-    @include('components.footer')
-    <!-- End Footer -->
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top">

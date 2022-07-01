@@ -16,6 +16,6 @@ class ContactController extends Controller
             'message'=>$request->input('message'),
         ]); 
 
-        return redirect()->back;
+        return view('home');
     }
 }
