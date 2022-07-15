@@ -83,7 +83,7 @@
                                 @if (Route::has('login'))
 
                                         @auth
-                                        <li><a href="{{ url('myappointments') }}" style="background-color: green; color: white; padding-left: 4px; padding-right: 4px; border-radius: 20px;">My Appointments</a></li>    
+                                        <li><a href="{{ url('my-appointments') }}" style="background-color: green; color: white; padding-left: 4px; padding-right: 4px; border-radius: 20px;">My Appointments</a></li>    
                                         <x-app-layout></x-app-layout>
                                             
                                         @else

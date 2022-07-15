@@ -109,12 +109,12 @@
                                                     </div>
                                                 </td>
 
-                                                <td class="product-price">LSL{{ $item->model->price }}.00</td>
+                                                <td class="product-price">LSL{{ $item->model->price * $item->qty }}.00</td>
 
                                                 <td class="product-quantity">
                                                     <!-- Quantity -->
-                                                    <div class="quantity">
-                                                        <div class="input-group">
+                                                    {{-- <div class="">
+                                                        <div class="input-group quantity">
                                                             <span class="minus">
                                                                 <img src="assets/img/icon/minus.svg" alt="" class="svg">
                                                             </span>
@@ -123,7 +123,22 @@
                                                                 <img src="assets/img/icon/plus2.svg" alt="" class="svg">
                                                             </span>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
+
+                                                    
+                                                    <select name="quantity" data-id="{{ $item->rowId }}"  class="quantity" style="width: 40px; margin-left: 70px;">
+
+                                                        @for ($i=1; $i < 10 +1; $i++)
+                                                        <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option> 
+                                                        @endfor
+                                                      
+                                                        {{-- <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
+                                                        <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
+                                                        <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
+                                                        <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option> --}}
+                                                        
+                                                    </select>
+                                                   
                                                     <!-- End Quantity -->
                                                 </td>
 
@@ -144,19 +159,26 @@
                                         
                                         
                                         <tr>
+
+                                            @if (!session()->has('coupon'))
+                                                
                                             <td colspan="2" class="actions">
                                                 <!-- Coupon -->
-                                                <div class="coupon">
-                                                    <div class="form-group mb-0">
-                                                        <input class="form-control" type="text" placeholder="Your Coupon">
-                                                        <button type="submit" class="btn">
-                                                            <span>Apply</span>
-                                                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
-                                                        </button>
+                                                <form action="{{ route('coupons.store') }}" method="POST">
+                                                    @csrf
+                                                    <div class="coupon">
+                                                        <div class="form-group mb-0">
+                                                            <input class="form-control" type="text" placeholder="Your Coupon" name="coupon_code" id="coupon_code">
+                                                            <button type="submit" class="btn">
+                                                                <span>Apply</span>
+                                                                <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                                 <!-- End Cupon -->
                                             </td>
+                                            @endif
 
                                             {{-- <td colspan="3" class="pe-0">
                                                 <div class="d-flex align-items-center justify-content-end">
@@ -177,8 +199,11 @@
                             </div>
                             
                             <!-- End Cart Form -->
-
+                            @if (session()->has('coupon'))
+                                <br><br><br>
+                            @endif
                             <!-- Cart Collaterals -->
+                            
                             <div class="cart-collaterals">
                                 <div class="cart_totals calculated_shipping">
                                     <table class="shop_table">
@@ -190,11 +215,48 @@
                                                         <span class="woocommerce-Price-currencySymbol">LSL</span>{{ Cart::subtotal( ) }}</span>
                                                 </td>
                                             </tr>
+                                            @if (session()->has('coupon'))
+                                                <tr class="cart-subtotal">
+
+                                                    
+                                                        
+                                                    <th>Discount({{ session()->get('coupon')['name'] }}) 
+                                                        <form action="{{ route('coupons.destroy') }}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit">Remove</button>
+                                                        
+                                                        </form>
+                                                    
+                                                    </th>
+                                                    <td>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">-LSL</span>{{ $discount }}
+
+                                                            
+                                                        </span>
+                                                    </td>                                                    
+                                                </tr>
+                                            @endif
+
+                                            @if (session()->has('coupon'))
                                             <tr class="cart-subtotal">
-                                                <th>Tax(15%)</th>
+                                                <th>New Subtotal</th>
                                                 <td>
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">LSL</span>{{ Cart::tax( ) }}</span>
+                                                        <span class="woocommerce-Price-currencySymbol">LSL</span>{{ $newsubtotal }}</span>
+                                                </td>
+                                            </tr>
+                                            @endif
+
+                                            <br><br><br>
+                                            <tr class="cart-subtotal">
+                                                <th>Tax(15%)</th>
+
+                                                
+                                                <td>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <span class="woocommerce-Price-currencySymbol">LSL</span>{{ $newtax }}</span>
                                                 </td>
                                             </tr>
                             
@@ -204,19 +266,28 @@
                                                     <strong>
                                                         <span class="woocommerce-Price-amount amount">
                                                             <span class="woocommerce-Price-currencySymbol">LSL</span>
-                                                            {{ Cart::total( ) }}
+                                                            {{ $newtotal }}
                                                         </span>
                                                     </strong> 
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                            
-                                    <div class="wc-proceed-to-checkout text-end">
-                                        <a href="checkout.html" class="btn">
-                                            <span>Proceed to checkout</span>
-                                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
-                                        </a>
+                                    <div class="row">
+
+                                        <div class="col-lg-6 wc-proceed-to-checkout ">
+                                            <a href="{{ url('shop') }}" class="btn">
+                                                <span>Continue Shopping</span>
+                                                <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-lg-6 wc-proceed-to-checkout text-end">
+                                            <a href="{{ url('checkout') }}" class="btn">
+                                                <span>Proceed to checkout</span>
+                                                <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -289,3 +360,26 @@
 </body>
 
 </html>
+<script src="{{ asset('js/app.js') }}"></script>
+
+<script>
+    (function(){
+        const className = document.querySelectorAll('.quantity')
+
+        Array.from(className).forEach(function(element) {
+            element.addEventListener('change', function(){
+                const id = element.getAttribute('data-id')
+                axios.patch(`/cart/${id}`, {
+                    quantity: this.value
+                })
+                .then(function (response) {
+                    // console.log(response);
+                    window.location.href='{{ route('cart.index') }}'
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            })
+        });
+    })();
+</script>

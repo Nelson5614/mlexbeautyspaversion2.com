@@ -80,7 +80,7 @@
                     <div class="single-product">
                         <div class="product-top">
                             <a href="shop-details.html" class="product-thumbnail">
-                                <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}" data-rjs="2" alt="">
+                                <img src="{{ asset('storage/'.$product->Image) }}" data-rjs="2" alt="">
                             </a>
 
                             <div class="buttons">

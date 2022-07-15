@@ -34,7 +34,7 @@
                             <li>Aromatherapy message[1hr] ………. LSL350</li>
                             <li>Reflexiology Massage ………. LSL150</li>
                         </ul>
-                        <a href="appointment.html" class="btn">
+                        <a href="{{ url('appointment') }}" class="btn">
                             <span>Appointment</span>
                             <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                         </a>
@@ -57,7 +57,7 @@
                             <li>Custom Waxing ………. $60</li>
                             <li>Full Waxing ………. $65</li>
                         </ul>
-                        <a href="appointment.html" class="btn">
+                        <a href="{{ url('appointment') }}" class="btn">
                             <span>Appointment</span>
                             <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                         </a>
@@ -81,7 +81,7 @@
                             <li>Virginal Tightening ………. LSL100</li>
                             <li>Breast Firming ………. LSL100</li>
                         </ul>
-                        <a href="appointment.html" class="btn">
+                        <a href="{{ url('appointment') }}" class="btn">
                             <span>Appointment</span>
                             <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                         </a>

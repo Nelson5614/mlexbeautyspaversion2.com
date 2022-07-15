@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropAppointmentTable extends Migration
+class AddImageToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class DropAppointmentTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('appointments');
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('Image')->nullable()->after('slug');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class DropAppointmentTable extends Migration
      */
     public function down()
     {
-        
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('Image');
+        });
     }
 }

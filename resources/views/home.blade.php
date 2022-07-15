@@ -194,7 +194,7 @@
             @foreach ($products as $product )
 
             <div class="shop-category-single">
-                <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}" data-rjs="2" alt="">
+                <img src="{{ asset('storage/'.$product->Image) }}" data-rjs="2" alt="">
 
                 <div class="content">
                     <h2>{{ $product->name }}</h2>
@@ -353,7 +353,7 @@
                         <div class="single-product">
                                 <div class="product-top">
                                     <a href="{{ url('product-details') }}" class="product-thumbnail">
-                                        <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}" data-rjs="2" alt="">
+                                        <img src="{{ asset('storage/'.$product->Image) }}" data-rjs="2" alt="">
                                     </a>
 
                                     <div class="buttons">

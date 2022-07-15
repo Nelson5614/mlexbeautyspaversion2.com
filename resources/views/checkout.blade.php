@@ -77,7 +77,8 @@
                 <div class="col-12">
                     <div class="woocommerce--content">
                         <!-- Checkout Form -->
-                        <form class="checkout woocommerce-checkout">
+                        <form class="checkout woocommerce-checkout" action="{{ route('checkout.store') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <!-- Billing Fields -->
@@ -86,48 +87,33 @@
     
                                         <div class="woocommerce-billing-fields__field-wrapper">
                                             <p>
-                                                <input type="text" class="form-control" placeholder="First Name">
+                                                <input type="text" class="form-control" value="{{ auth()->user()->name }}" name="name" readonly>
                                             </p>
                                             <p>
-                                                <input type="text" class="form-control" placeholder="Last Name">
+                                                <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                                            </p>
+                                          
+                                            <p>
+                                                <input type="tel" class="form-control" name="phone" value="{{ auth()->user()->phone }}" readonly>
                                             </p>
                                             <p>
-                                                <input class="form-control" type="text" placeholder="Company name (optional)">
-                                            </p>
-                                            <p>
-                                                <input type="tel" class="form-control" placeholder="Phone Number">
-                                            </p>
-                                            <p>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <input type="email" class="form-control" name="email"  value="{{ auth()->user()->email }}" readonly>
                                             </p>
                                             <p>
                                                 <select class="form-control">
                                                     <option value="" disabled="" selected="">Country</option>
-                                                    <option>Bangladesh</option>
-                                                    <option>USA</option>
-                                                    <option>Uk</option>
+                                                    <option>Lesotho</option>
+                                                    <option>South Africa</option>
+                                                    
                                                 </select>
                                             </p>
+                                           
+                                            
+                                            
                                             <p>
-                                                <select class="form-control">
-                                                    <option value="" disabled="" selected="">City</option>
-                                                    <option>Newyork</option>
-                                                    <option>Dubai</option>
-                                                    <option>SA</option>
-                                                </select>
+                                                <input type="text" class="form-control" name="district" placeholder="District">
                                             </p>
-                                            <p>
-                                               <input type="text" class="form-control" placeholder="House number and street name">
-                                            </p>
-                                            <p>
-                                                <input type="text" class="form-control" placeholder="House number and street name">
-                                            </p>
-                                            <p>
-                                                <input type="text" class="form-control" placeholder="District">
-                                            </p>
-                                            <p>
-                                                <input type="number" class="form-control" placeholder="Postcode">
-                                            </p>
+                                            
                                         </div>
                                     </div>
                                     <!-- End Billing Fields -->
@@ -169,30 +155,18 @@
                                             </thead>
                                     
                                             <tbody>
-                                                <tr class="cart_item">
-                                                    <th class="product-name">
-                                                        Drop Your Product Name here <span class="product-quantity">x 02</span>
-                                                    </th>
-                                                    <td class="product-total">
-                                                        $31
-                                                    </td>
-                                                </tr>
-                                                <tr class="cart_item">
-                                                    <th class="product-name">
-                                                        Drop Your Product Name here <span class="product-quantity">x 02</span>
-                                                    </th>
-                                                    <td class="product-total">
-                                                        $31
-                                                    </td>
-                                                </tr>
-                                                <tr class="cart_item">
-                                                    <th class="product-name">
-                                                        Drop Your Product Name here <span class="product-quantity">x 02</span>
-                                                    </th>
-                                                    <td class="product-total">
-                                                        $31
-                                                    </td>
-                                                </tr>
+                                                @foreach (Cart::content() as $item )
+                                                    <tr class="cart_item">
+                                                        <th class="product-name">
+                                                            {{ $item->model->name }} <span class="product-quantity">x {{ $item->qty }}</span>
+                                                        </th>
+                                                        <td class="product-total">
+                                                            LSL{{ $item->model->price }}.00
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                
+                                                
                                             </tbody>
                                     
                                             <tfoot>
@@ -201,7 +175,15 @@
                                                         Subtotal :
                                                     </th>
                                                     <td>
-                                                        $311.1
+                                                        LSL{{ Cart::subtotal( ) }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="cart-subtotal">
+                                                    <th>
+                                                        Tax :
+                                                    </th>
+                                                    <td>
+                                                        LSL{{ Cart::tax( ) }}
                                                     </td>
                                                 </tr>
                                                 <tr class="order-total">
@@ -209,21 +191,62 @@
                                                         Total :
                                                     </th>
                                                     <td>
-                                                        $113.5
+                                                        LSL{{ Cart::total( ) }}
                                                     </td>
                                                 </tr>
                                             </tfoot>
                                         </table>
                                         <!-- End CheckOut Table -->
 
-                                        <div class="mt-30 text-end">
-                                            <button class="btn">
-                                                <span>Place Order</span>
-                                                <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
-                                            </button>
-                                        </div>
+                                       
                                     </div>
                                     <!-- End Order Details -->
+                                </div>
+                            </div>
+
+                            <br> <br> <br> <br>
+
+                            <div class="col-lg-6 woocommerce-billing-fields">
+                                <h4 class="billing-details-title">Payment Details</h4>
+
+                                <div class="woocommerce-billing-fields__field-wrapper">
+                                    <p>
+                                        <input type="text" class="form-control" placeholder="Name on card">
+                                    </p>
+                                    <p>
+                                        <input type="text" class="form-control" placeholder="Address">
+                                    </p>
+                                    <p>
+                                        <input class="form-control" type="text" placeholder="Credit card number">
+                                    </p>
+
+                                    <div class="row">
+
+                                        
+                                        <div class="col-lg-6">
+                                            <p>
+                                                <input class="form-control" type="date" placeholder="Expiry">
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <p>
+                                                <input class="form-control" type="text" placeholder="CVC code">
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                   
+
+                                    <div class="mt-30 text-end">
+                                        <button class="btn" type="submit">
+                                            <span>Place Order</span>
+                                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                                        </button>
+                                    </div>
+
+                                   
+                                    
                                 </div>
                             </div>
                         </form>

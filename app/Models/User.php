@@ -60,4 +60,8 @@ class User extends \TCG\Voyager\Models\User
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function orders(){
+        return $this->hasMany('App\Order');
+    }
 }

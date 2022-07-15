@@ -82,7 +82,7 @@
                         <div class="product-details mb-60">
                             <div class="row">
                                 <div class="col-lg-6" style="padding: 24px;">
-                                    <img src="{{ asset('assets/img/media/'.$product->slug.'.jpg') }}"/>
+                                    <img src="{{ asset('storage/'.$product->Image) }}"/>
                                 </div>
                                 
                                 <div class="col-lg-6">
@@ -91,7 +91,7 @@
                                     <!-- Product Details Content -->
                                     <div class="product-details-content">
                                         <div class="price-review d-flex align-items-center">
-                                            <div class="price">LSL{{ $product->price }}</div>
+                                            <div class="price">LSL{{ $product->price }}.00</div>
                                             <div>
                                                 <div class="star-rating">
                                                     <i class="fas fa-star"></i>

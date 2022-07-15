@@ -1,10 +1,15 @@
 <?php
 
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CouponsController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AppointmentController;
 
 
@@ -37,16 +42,32 @@ use App\Http\Controllers\AppointmentController;
         //cart routes
         Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
         Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
-        Route::get('/checkout', [CartController::class, 'checkout']);
+        
+        Route::patch('/cart/{product}', [CartController::class, 'update'])->name('cart.update');
         Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.delete');
+
+
+        //Coupon routes
+        Route::post('coupons', [CouponsController::class, 'store'])->name('coupons.store');
+        Route::delete('coupons', [CouponsController::class, 'destroy'])->name('coupons.destroy');
 
       
 
         //Appointments routes
         Route::get('/appointment', [HomeController::class, 'appointment']);
-        Route::get('/myappointments', [AppointmentController::class, 'myappointments']);
+        Route::get('/my-appointments', [AppointmentController::class, 'myappointments']);
         Route::get('/cancel-appointment/{id}', [AppointmentController::class, 'cancel']);
         Route::post('/appointment', [AppointmentController::class, 'appointment'])->name('appointment');
+
+        //Mailling routes
+        Route::get('email', [EmailsController::class, 'email'])->name('emails.email');
+        // Route::get('appointment-email', [EmailsController::class, 'appointment'])->name('emails.appointment');
+
+        Route::get('appointment-email', function(){
+
+            $appointment = App\Models\Appointment::find(1);
+            return new App\Mail\AppointmentMail($appointment);
+        });
 
 
 
@@ -58,6 +79,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('home');
     })->name('dashboard');
+
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::get('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 });
 
 
