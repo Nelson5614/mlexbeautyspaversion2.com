@@ -15,11 +15,13 @@ use App\Http\Controllers\AppointmentController;
 
        // pages routes
         Route::get('/', [HomeController::class, 'home']);
+        Route::get('/specialists', [HomeController::class, 'specialists']);
         Route::get('/portfolio', [HomeController::class, 'portfolio']);
 
         //Contat routes
-        Route::get('/contact', [HomeController::class, 'contact']);
+        Route::get('/newsletter', [HomeController::class, 'contact']);
         Route::post('/contact', [ContactController::class, 'contact'])->name('contact');
+        Route::post('/newsletter', [Newsletter::class, 'newsletter'])->name('newsletter');
         
         //Blog routes
         Route::get('/blog', [HomeController::class, 'blog']);
@@ -28,10 +30,12 @@ use App\Http\Controllers\AppointmentController;
         //Servives routes
         Route::get('/massage-services', [HomeController::class, 'massage_services']);
         Route::get('/body-services', [HomeController::class, 'body_services']);
+        Route::get('/body-services/{bodyservices}', [HomeController::class, 'showbodyservice'])->name('bodyservice');
+        Route::get('/services/{service}', [HomeController::class, 'showservice'])->name('showservice');
         
         
         //Shop routes
-        Route::get('/shop', [HomeController::class, 'shop']);
+        Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
         Route::get('/shop/{product}', [HomeController::class, 'show'])->name('product_details');
         
         //About routes
@@ -81,7 +85,8 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-    Route::get('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::post('/checkout-mpesa', [CheckoutController::class, 'mpesa'])->name('checkout.mpesa');
+    Route::put('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 });
 
 

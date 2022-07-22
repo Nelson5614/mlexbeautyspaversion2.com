@@ -41,11 +41,11 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader">              
+    {{-- <div class="preloader">              
         <div class="spinner-grow" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader -->
 
     <!-- Header -->
@@ -77,7 +77,7 @@
                 <div class="col-12">
                     <div class="woocommerce--content">
                         <!-- Checkout Form -->
-                        <form class="checkout woocommerce-checkout" action="{{ route('checkout.store') }}" method="POST">
+                        <form class="checkout woocommerce-checkout" action="{{ route('checkout.mpesa') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
@@ -207,39 +207,19 @@
                             <br> <br> <br> <br>
 
                             <div class="col-lg-6 woocommerce-billing-fields">
-                                <h4 class="billing-details-title">Payment Details</h4>
+                                <h4 class="billing-details-title">Payment Method</h4>
 
                                 <div class="woocommerce-billing-fields__field-wrapper">
-                                    <p>
-                                        <input type="text" class="form-control" placeholder="Name on card">
-                                    </p>
-                                    <p>
-                                        <input type="text" class="form-control" placeholder="Address">
-                                    </p>
-                                    <p>
-                                        <input class="form-control" type="text" placeholder="Credit card number">
-                                    </p>
-
-                                    <div class="row">
-
+                                    
                                         
-                                        <div class="col-lg-6">
-                                            <p>
-                                                <input class="form-control" type="date" placeholder="Expiry">
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <p>
-                                                <input class="form-control" type="text" placeholder="CVC code">
-                                            </p>
-                                        </div>
-                                        
-                                    </div>
+                                   <div>
+                                    <img src="{{ asset('assets/img/media/M-Pesa-Agent-Requirements-Sub-Agents-Application-and-Commission.jpeg') }}" style=" width: 400px;">
+                                   </div>
                                     
                                    
 
-                                    <div class="mt-30 text-end">
-                                        <button class="btn" type="submit">
+                                    <div class="mt-30 ">
+                                        <button class="btn" style="background-color: #F81781;" type="submit">
                                             <span>Place Order</span>
                                             <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                                         </button>

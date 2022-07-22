@@ -64,18 +64,15 @@ $context->set_ssl(true);
 $context->set_method_type(APIMethodType::POST);
 $context->set_address('openapi.m-pesa.com');
 $context->set_port(443);
-$context->set_path('/sandbox/ipg/v2/vodacomLES/c2bPayment/singleStage/');
+$context->set_path('/sandbox/ipg/v2/vodacomLES/reversal/');
 
 $context->add_header('Origin', '*');
 
-$context->add_parameter('input_Amount', '50');
+$context->add_parameter('input_ReversalAmount', '25');
 $context->add_parameter('input_Country', 'LES');
-$context->add_parameter('input_Currency', 'LSL');
-$context->add_parameter('input_CustomerMSISDN', '000000000001');
 $context->add_parameter('input_ServiceProviderCode', '000000');
 $context->add_parameter('input_ThirdPartyConversationID', 'asv02e5958774f7ba228d83d0d689761');
-$context->add_parameter('input_TransactionReference', 'T1234C');
-$context->add_parameter('input_PurchasedItemsDesc', 'Shoes');
+$context->add_parameter('input_TransactionID', '0000000000002');
 
 $request = new APIRequest($context);
 

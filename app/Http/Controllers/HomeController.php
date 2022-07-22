@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Service;
+use App\Models\Specialist;
+use App\Models\Bodyservice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,14 +19,21 @@ class HomeController extends Controller
             return view('home')->with('products', $products);
       
     }
+
+    public function specialists(){
+
+        $specialists = Specialist::inRandomOrder()->get();
+        return view('specialists')->with('specialists', $specialists);
+    }
     public function massage_services(){
 
-            return view('massage_services');
+        $services = Service::inRandomOrder()->get();;
+            return view('massage_services')->with('services', $services);
       
     }
     public function body_services(){
-
-            return view('body_services');
+        $bodyservices = Bodyservice::inRandomOrder()->get();
+            return view('body_services')->with('bodyservices', $bodyservices);
       
     }
     public function shop(){
@@ -42,6 +52,18 @@ class HomeController extends Controller
                 'product'=> $product,
                 'relatedproducts'=> $relatedproducts
         ]);
+
+    }
+    public function showservice($slug){
+
+        $service = Service::where('slug', $slug)->firstOrFail();
+        return view('services_details')->with('service' ,$service);
+
+    }
+    public function showbodyservice($slug){
+
+        $bodyservices = Bodyservice::where('slug', $slug)->firstOrFail();
+        return view('bodyservices_details')->with('bodyservices' ,$bodyservices);
 
     }
     public function about(){
@@ -72,12 +94,6 @@ class HomeController extends Controller
     public function product_details(){
 
             return view('product_details');
-      
-    }
- 
-    public function specialists(){
-
-            return view('specialists');
       
     }
     public function appointment(){

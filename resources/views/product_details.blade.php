@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,7 +138,7 @@
                                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                                 <input type="hidden" name="price" value="{{ $product->price }}">
                                                 
-                                                <button type="submit" class="single_add_to_cart_button btn">
+                                                <button type="submit" class=" btn" style="background-color: #F81781;">
                                                     <span>Add to cart</span>
                                                     <img src="{{ asset('assets/img/icon/btn-arrow.svg') }}" alt="" class="svg">
                                                 </button>

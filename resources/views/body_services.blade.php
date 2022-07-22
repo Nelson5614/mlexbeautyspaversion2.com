@@ -41,11 +41,11 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader">              
+    {{-- <div class="preloader">              
         <div class="spinner-grow" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader -->
 
     <!-- Header -->
@@ -53,7 +53,7 @@
     <!-- End Header -->
 
     <!-- Breadcrumb -->
-    <div class="page-title-wrap" data-bg-img="assets/img/bg/pexels-rodnae-productions-6724351.jpg">
+    <div class="page-title-wrap" data-bg-img="{{ asset('assets/img/bg/pexels-rodnae-productions-6724351.jpg') }}">
         <div class="container"> 
             <div class="row"> 
                 <div class="col-12">
@@ -71,7 +71,7 @@
     <!-- End Breadcrumb -->
 
     <!-- Service -->
-    <section class="service pt-120 pb-90" data-bg-img="assets/img/bg/service-bg.png">
+    <section class="service pt-120 pb-90" data-bg-img="{{ asset('assets/img/bg/service-bg.png') }}">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
@@ -86,88 +86,28 @@
                 <div class="col-md-4 text-lg-end">
                     <a href="{{ url('appointment') }}" class="btn mb-60 res-mt">
                         <span>Appointment</span>
-                        <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                        <img src="{{ asset('assets/img/icon/btn-arrow.svg') }}" alt="" class="svg">
                     </a>
                 </div>
             </div>
             <div class="row">
+                @foreach ( $bodyservices as $bodyservice )
+                    
                 <div class="col-lg-4 col-sm-6">
                     <!-- Single Service -->
                     <div class="single-service service-box">
                         <div class="icon">
-                            <img src="assets/img/icon/service-icon1.svg" alt="" class="svg">
+                            <img src="{{ asset('storage/'.$bodyservice->icon) }}" data-rjs="2" alt="">
                         </div>
                         <div class="content">
-                            <a href="service-details.html"><h3>Foot Detox</h3></a>
-                            <p>Enhaces the body’s own natural detoxification abilities...</p>
+                            <a href="{{ route('bodyservice', $bodyservice->slug) }}"><h3>{{ $bodyservice->title }}</h3></a>
+                            <p>{{ $bodyservice->details }}</p>
                         </div>
                     </div>
                     <!-- End Single Service -->
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box active">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon2.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Facial Treatment</h3></a>
-                            <p>Let's you with any skin problem you may be facing...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon3.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Butt Enlargement</h3></a>
-                            <p>We use non surgical machines which helps one to...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon4.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Breasts Lifting</h3></a>
-                            <p>We use non surgical machines which helps one to...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon5.svg" alt="" class="svg stroke">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Tummy Reduction</h3></a>
-                            <p>We use cavitation, Lazer lipolysis, radio frequency...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon6.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Virginal Tightning</h3></a>
-                            <p>We use non surgical machines which helps one to...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
+                @endforeach
+                
                 </div>
             </div>
         </div>
@@ -175,7 +115,7 @@
     <!-- End Service -->
 
     <!-- Video -->
-    <section class="video-section pb-120 pt-120" data-bg-img="assets/img/bg/video-bg.png">
+    <section class="video-section pb-120 pt-120" data-bg-img="{{ asset('assets/img/bg/video-bg.png') }}">
         <div class="container">
             <div class="row">
                 <div class="col-12">

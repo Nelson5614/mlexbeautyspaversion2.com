@@ -41,11 +41,11 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader">              
+    {{-- <div class="preloader">              
         <div class="spinner-grow" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader -->
 
     <!-- Header -->
@@ -91,84 +91,24 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon1.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Sports Massage</h3></a>
-                            <p>Sports massage is reported to have many beneficial effects ...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
+             
+                @foreach ($services as $service )
+                    
                 <div class="col-lg-4 col-sm-6">
                     <!-- Single Service -->
                     <div class="single-service service-box active">
                         <div class="icon">
-                            <img src="assets/img/icon/service-icon2.svg" alt="" class="svg">
+                            <img src="{{ asset('storage/'.$service->icon) }}" data-rjs="2" alt="">
                         </div>
                         <div class="content">
-                            <a href="service-details.html"><h3>Aromatherapy</h3></a>
-                            <p>Aromatherapy is a holistic healing treatment that uses...</p>
+                            <a href="{{ route('showservice', $service->slug) }}"><h3>{{ $service->title }}</h3></a>
+                            <p>{{ $service->shotdec }}</p>
                         </div>
                     </div>
                     <!-- End Single Service -->
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon3.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Swedish Massage</h3></a>
-                            <p>The Swedish massage is one of the most common types of ...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon4.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Reflexiology</h3></a>
-                            <p>Reflexology is a type of massage that involves ...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon5.svg" alt="" class="svg stroke">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Cupping Massages</h3></a>
-                            <p>Cupping therapy is an ancient form of alternative ...</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Service -->
-                    <div class="single-service service-box">
-                        <div class="icon">
-                            <img src="assets/img/icon/service-icon6.svg" alt="" class="svg">
-                        </div>
-                        <div class="content">
-                            <a href="service-details.html"><h3>Deep Tissue</h3></a>
-                            <p>Nails salon location they decided their passion gainesville.</p>
-                        </div>
-                    </div>
-                    <!-- End Single Service -->
-                </div>
+                @endforeach
+               
             </div>
         </div>
     </section>

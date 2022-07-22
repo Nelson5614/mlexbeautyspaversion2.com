@@ -41,11 +41,11 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader">              
+    {{-- <div class="preloader">              
         <div class="spinner-grow" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader -->
 
 @include('components.header')
@@ -101,7 +101,7 @@
                             <div class="banner-content">
                                 <h4>Or magic begins here!</h4>
                                 <h1>Some Shine in <br /> Your Life.</h1>
-                                <p>After owning two successful beauty locations they decided to <br /> their passion to the small town of documentary to convince <br /> audience to buy into any one.</p>
+                                <p>After owning multiple successful beauty spa we are <br /> that this is our passion and we are best at it. <br /> audience to buy into any one.</p>
                                 
                                 <a href="appointment.html" class="btn">
                                     <span>Appointment</span>
@@ -133,7 +133,7 @@
                     <!-- End Section Title -->
                 </div>
                 <div class="col-md-4 text-lg-end">
-                    <a href="service.html" class="btn mb-60 res-mt">
+                    <a href="{{ url('masssage-services') }}" class="btn mb-60 res-mt">
                         <span>all Services</span>
                         <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
                     </a>
@@ -147,7 +147,7 @@
                             <img src="assets/img/icon/service-icon1.svg" alt="" class="svg">
                         </div>
                         <div class="content">
-                            <a href="service-details.html"><h3>Massage Care</h3></a>
+                            <a href="{{ url('massage-services') }}"><h3>Massage Care</h3></a>
                             <p>sports massage, swedish, deep tissue, this are only few of the many massages services that we offer.</p>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                             <img src="assets/img/icon/service-icon2.svg" alt="" class="svg">
                         </div>
                         <div class="content">
-                            <a href="service-details.html"><h3>Hot Waxing</h3></a>
+                            <a href="{{ url('body-services') }}"><h3>Hot Waxing</h3></a>
                             <p>We also provide hot waxing and many other body services you will love.</p>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                             <img src="assets/img/icon/service-icon3.svg" alt="" class="svg">
                         </div>
                         <div class="content">
-                            <a href="service-details.html"><h3>Body Treatment</h3></a>
+                            <a href="{{ url('body-services') }}"><h3>Body Treatment</h3></a>
                             <p>Foot detox, verginal tightning, tummy reduction ect are the body services that we offer.</p>
                         </div>
                     </div>
@@ -240,7 +240,7 @@
    @include('components.specialists')
 
     <!-- Testimonial -->
-    <section class="testimonial pt-120 pb-120" data-bg-img="assets/img/bg/testimonial-bg.png">
+    {{-- <section class="testimonial pt-120 pb-120" data-bg-img="assets/img/bg/testimonial-bg.png">
         <div class="custom-container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-sm-6">
@@ -323,7 +323,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- End Testimonial -->
 
     <!-- Product -->
@@ -352,7 +352,7 @@
                         <!-- Single Product -->                    
                         <div class="single-product">
                                 <div class="product-top">
-                                    <a href="{{ url('product-details') }}" class="product-thumbnail">
+                                    <a href="{{ route('shop') }}" class="product-thumbnail">
                                         <img src="{{ asset('storage/'.$product->Image) }}" data-rjs="2" alt="">
                                     </a>
 
@@ -378,7 +378,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     
-                                    <a href="{{ url('product-details') }}"><h4>{{ $product->name }}</h4></a>
+                                    <a href="{{ url('shop') }}"><h4>{{ $product->name }}</h4></a>
 
                                     <span class="price">
                                         <span class="woocommerce-Price-amount amount">

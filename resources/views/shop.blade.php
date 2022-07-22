@@ -41,11 +41,11 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader">              
+    {{-- <div class="preloader">              
         <div class="spinner-grow" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader -->
 
     <!-- Header -->
@@ -79,7 +79,7 @@
                     <!-- Single Product -->
                     <div class="single-product">
                         <div class="product-top">
-                            <a href="shop-details.html" class="product-thumbnail">
+                            <a href="{{ url('shop') }}" class="product-thumbnail">
                                 <img src="{{ asset('storage/'.$product->Image) }}" data-rjs="2" alt="">
                             </a>
 

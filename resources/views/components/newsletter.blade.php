@@ -8,9 +8,10 @@
                         <h2>Newsletter</h2>
                         <p>Please leave us your email address so we can update you on specials and promotions</p>
 
-                        <form action="https://themelooks.us13.list-manage.com/subscribe/post?u=79f0b132ec25ee223bb41835f&id=f4e0e93d1d" class="newsletter-form">
+                        <form action="{{ route('newsletter') }}" method="POST" class="newsletter-form">
+                            @csrf
                             <div class="theme-input-group">
-                                <input class="form-control" type="email" placeholder="Enter your email here"> <button type="submit" class="submit-btn btn"><span>Submit now</span></button>
+                                <input class="form-control" type="email" name="email" placeholder="Enter your email here"> <button type="submit" class="submit-btn btn"><span>Submit now</span></button>
                             </div>
                         </form>
                     </div>

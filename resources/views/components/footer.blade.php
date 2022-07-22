@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="footer" data-bg-img="assets/img/bg/footer-bg.png"> 
+<footer class="footer" data-bg-img="{{ asset('assets/img/bg/footer-bg.png') }}"> 
     <!-- Footer Main -->
     <div class="footer-main">
         <div class="container">
@@ -36,9 +36,9 @@
                         <h3 class="widget-title">Products</h3>
                         <div class="menu-container">
                             <ul class="menu">
-                                <li><a href="shop.html">Products</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="appointment.html">Appointment</a></li>
+                                <li><a href="{{ url('shop') }}">Products</a></li>
+                                <li><a href="p{{ url('shop') }}">Pricing</a></li>
+                                <li><a href="{{ url('appointment') }}">Appointment</a></li>
                                 
                             </ul>
                         </div>
@@ -52,10 +52,10 @@
                         <h3 class="widget-title">About us</h3>
                         <div class="menu-container">
                             <ul class="menu">
-                                <li><a href="about.html">Mlexbeautyspa</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
-                                <li><a href="service.html">Our Services</a></li>
-                                <li><a href="contact.html">Careers</a></li>
+                                <li><a href="{{ url('about') }}">Mlexbeautyspa</a></li>
+                                <li><a href="{{ url('contact') }}">Contact us</a></li>
+                                <li><a href="{{ url('massage-services') }}">Our Services</a></li>
+                                <li><a href="{{ url('contact') }}">Careers</a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,9 +68,9 @@
                         <h3 class="widget-title">Resources</h3>
                         <div class="menu-container">
                             <ul class="menu">
-                                <li><a href="contact.html">Help center</a></li>
-                                <li><a href="portfolio.html">Portfolio</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="{{ url('contact') }}">Help center</a></li>
+                                <li><a href="{{ url('portfolio') }}">Portfolio</a></li>
+                                <li><a href="{{ url('blog') }}">Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                 <div class="col-lg-8">
                     <div class="footer-bottom-content justify-content-center justify-content-lg-start mb-4 mb-lg-0">
                         <div class="footer-logo">
-                            <img src="assets/img/logo.png" style="width: 80px;">
+                            <img src="{{ asset('assets/img/logo.png') }}" style="width: 80px;">
                         </div>
                         <div class="copyright-text">
                             Copyright © 2021. All right reserved. Designed with love by Nelson Mathebeng

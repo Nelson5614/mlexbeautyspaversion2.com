@@ -14,7 +14,7 @@
             <div class="col-md-4 text-lg-end">
                 <a href="pricing.html" class="btn mb-60 res-mt">
                     <span>See all plan</span>
-                    <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                    <img src="{{ asset('assets/img/icon/btn-arrow.svg') }}" alt="" class="svg">
                 </a>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <div class="single-price">
                     <div class="price-head">
                         <h3>Massage Therapy</h3>
-                        <h4>Starting From $25</h4>
+                        <h4>Starting From LSL150</h4>
                     </div>
                     <div class="price-body">
                         <ul>
@@ -36,7 +36,7 @@
                         </ul>
                         <a href="{{ url('appointment') }}" class="btn">
                             <span>Appointment</span>
-                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                            <img src="{{ asset('assets/img/icon/btn-arrow.svg') }}" alt="" class="svg">
                         </a>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         </ul>
                         <a href="{{ url('appointment') }}" class="btn">
                             <span>Appointment</span>
-                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                            <img src="{{ asset('assets/img/icon/btn-arrow.svg') }}" alt="" class="svg">
                         </a>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="single-price">
                     <div class="price-head">
                         <h3>Body Services</h3>
-                        <h4>Starting From $25</h4>
+                        <h4>Starting From LSL 100</h4>
                     </div>
                     <div class="price-body">
                         <ul>
@@ -83,7 +83,7 @@
                         </ul>
                         <a href="{{ url('appointment') }}" class="btn">
                             <span>Appointment</span>
-                            <img src="assets/img/icon/btn-arrow.svg" alt="" class="svg">
+                            <img src="{{ asset('assets/img/icon/btn-arrow.svg') }}" alt="" class="svg">
                         </a>
                     </div>
                 </div>

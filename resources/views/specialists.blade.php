@@ -41,11 +41,11 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader">              
+    {{-- <div class="preloader">              
         <div class="spinner-grow" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader -->
 
     <!-- Header -->
@@ -86,30 +86,21 @@
                     </div>
                     <!-- End Single Specialist -->
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Specialist -->
-                    <div class="single-specialist active">
-                        <img src="assets/img/media/IMG-20220217-WA0024.jpg" data-rjs="2" alt="">
+                  @foreach ($specialists as $specialist)
+                
+            <div class="col-lg-4 col-sm-6">
+                <!-- Single Specialist -->
+                <div class="single-specialist active">
+                    <img src="{{ asset('storage/'.$specialist->image) }}" data-rjs="2" alt="">
 
-                        <div class="content">
-                            <h3>Deekay Lephema </h3>
-                            <p>Beauty Specialist </p>
-                        </div>
+                    <div class="content">
+                        <h3> {{ $specialist->name }} </h3>
+                        <p>Beauty Specialist </p>
                     </div>
-                    <!-- End Single Specialist -->
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <!-- Single Specialist -->
-                    <div class="single-specialist">
-                        <img src="assets/img/media/IMG-20220217-WA0022.jpg" data-rjs="2" alt="">
-
-                        <div class="content">
-                            <h3>Tshepy Lerama</h3>
-                            <p>Beauty specialist</p>
-                        </div>
-                    </div>
-                    <!-- End Single Specialist -->
-                </div>
+                <!-- End Single Specialist -->
+            </div>
+            @endforeach
                 
             </div>
         </div>
@@ -122,132 +113,7 @@
 
 
     <!-- Footer -->
-    <footer class="footer" data-bg-img="assets/img/bg/footer-bg.png"> 
-        <!-- Footer Main -->
-        <div class="footer-main">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <!-- Widget About -->
-                        <div class="widget widget_about">
-                            <h3 class="widget-title">About Beautain</h3>
-                            <div class="menu-container">
-                                <p>I have been a beauty beautain from march beautain.</p>
-
-                                <!-- Socials -->
-                                <div class="socials">
-                                    <a href="https://www.facebook.com">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="https://www.twitter.com">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="https://www.instagram.com">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                    <a href="https://www.pinterest.com">
-                                        <i class="fab fa-pinterest"></i>
-                                    </a>
-                                </div>
-                                <!-- End Socials -->
-                            </div>
-                        </div>
-                        <!-- End Widget About -->
-                    </div>
-
-                    <div class="col-lg-2 col-sm-3">
-                        <!-- Widget Nav Menu -->
-                        <div class="widget widget_nav_menu">
-                            <h3 class="widget-title">Products</h3>
-                            <div class="menu-container">
-                                <ul class="menu">
-                                    <li><a href="shop.html">Products</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="appointment.html">Appointment</a></li>
-                                    <li><a href="contact.html">Request us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End Widget Nav Menu -->
-                    </div>
-
-                    <div class="col-lg-2 col-sm-3">
-                        <!-- Widget Nav Menu -->
-                        <div class="widget widget_nav_menu">
-                            <h3 class="widget-title">About us</h3>
-                            <div class="menu-container">
-                                <ul class="menu">
-                                    <li><a href="about.html">Beautain</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                    <li><a href="service.html">Our Services</a></li>
-                                    <li><a href="contact.html">Careers</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End Widget Nav Menu -->
-                    </div>
-
-                    <div class="col-lg-2 col-sm-4 order-1 order-lg-0">
-                        <!-- Widget Nav Menu -->
-                        <div class="widget widget_nav_menu">
-                            <h3 class="widget-title">Resources</h3>
-                            <div class="menu-container">
-                                <ul class="menu">
-                                    <li><a href="contact.html">Help center</a></li>
-                                    <li><a href="appointment.html">Book a demo</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End Widget Nav Menu -->
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <!-- Widget Nav Menu -->
-                        <div class="widget widget_contact_info">
-                            <h3 class="widget-title">Get in Touch</h3>
-                            <div class="menu-container">
-                                <p>I have been a beauty beautain from march beautain have.</p>
-                                <ul class="contact-list">
-                                    <li>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        85 Royal Street, Sydney <br />SD, Australia.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End Widget Nav Menu -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Footer Main -->
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <div class="footer-bottom-content justify-content-center justify-content-lg-start mb-4 mb-lg-0">
-                            <div class="footer-logo">
-                                <img src="assets/img/footer-logo.svg" class="svg" alt="">
-                            </div>
-                            <div class="copyright-text">
-                                Copyright © 2021. All right reserved.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="accept-cards text-center text-lg-end">
-                            <img src="assets/img/media/cards.png" data-rjs="2" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Footer Bottom -->
-    </footer>
+    @include('components.footer')
     <!-- End Footer -->
 
     <!-- Back to Top Button -->

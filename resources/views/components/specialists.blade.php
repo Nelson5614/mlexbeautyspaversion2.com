@@ -31,6 +31,7 @@
                 </div>
                 <!-- End Single Specialist -->
             </div>
+
             <div class="col-lg-4 col-sm-6">
                 <!-- Single Specialist -->
                 <div class="single-specialist active">
@@ -55,6 +56,7 @@
                 </div>
                 <!-- End Single Specialist -->
             </div>
+            
         </div>
     </div>
 </section>

@@ -41,11 +41,11 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader">              
+    {{-- <div class="preloader">              
         <div class="spinner-grow" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader -->
 
     <!-- Header -->
@@ -92,7 +92,7 @@
                         <div class="meta-wrap">
                             <div class="meta-info">
                                 <h3>Mlex Mpasi</h3>
-                                <p>Funder Of Mlexbeautyspa</p>
+                                <p>CEO Of Mlexbeautyspa</p>
                             </div>
                             <div class="sign">
                                 <img src="assets/img/icon/signature.png" alt="">

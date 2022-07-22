@@ -73,4 +73,9 @@ public function getNUmbers(){
   
 }
 
+public function mpesa(){
+
+    return view('mpesa.index');
+}
+
 }
